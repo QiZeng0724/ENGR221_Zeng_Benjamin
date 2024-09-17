@@ -4,32 +4,32 @@ class MySet:
         self.__s = []   # List to store the set values
         self.__setsize = 0  # Tracks the size of the set
 
-        # Add only unique values to the set
+        # Add unique values to the set
         for value in initialValues:
             if value not in self.__s:
                 self.__s.append(value)
                 self.__setsize += 1
 
-    # Search for a value in the set
+    # Search for values in the set
     def search(self, value):
         for item in self.__s:
             if item == value:
-                return True  # Value found
-        return False  # Value not found
+                return True  # Values found
+        return False  # Values not found
 
-    # Insert a new value into the set
+    # Insert new values into the set
     def insert(self, value):
         if value not in self.__s:
             self.__s.append(value)
             self.__setsize += 1
 
-    # Delete a value from the set
+    # Delete values from the set
     def delete(self, value):
         if value in self.__s:
             self.__s.remove(value)
             self.__space -= 1
             return True  # Successfully deleted
-        return False  # Value not found
+        return False  # Values not found
 
     # Traverse and print all values in the set
     def traverse(self):
@@ -44,6 +44,5 @@ class MySet:
     def vals(self):
         return self.__s
 
-# Example usage:
 if __name__ == '__main__':
     pass
