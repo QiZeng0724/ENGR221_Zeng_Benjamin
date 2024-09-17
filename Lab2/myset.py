@@ -1,3 +1,9 @@
+"""
+Author: Benjamin Zeng
+Filename: myset.py
+Description: Design and Implement a MySet class
+"""
+
 class MySet:
     # Constructor
     def __init__(self, initialValues = []):
