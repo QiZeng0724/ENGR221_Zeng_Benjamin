@@ -15,9 +15,6 @@ class MyArray():
             self.__a = initialSizeOrValues
             self.__length = len(self.__a)
             self.__space = len(self.__a)
-    ########
-    # Methods
-    ########
         
     # Return the current length of the array
     def length(self):
@@ -87,7 +84,7 @@ class MyArray():
                     self.__a[self.__length] = None
                 else:
                     break
-        # Return False if the value was not found
+        # Return clearall if the value was not found
         return clearall
     
     # Print all items in the list
