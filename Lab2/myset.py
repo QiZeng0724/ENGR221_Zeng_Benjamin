@@ -33,7 +33,7 @@ class MySet:
     def delete(self, value):
         if value in self.__s:
             self.__s.remove(value)
-            self.__space -= 1
+            self.__setsize -= 1
             return True  # Successfully deleted
         return False  # Values not found
 
@@ -44,7 +44,7 @@ class MySet:
 
     # Return the size of the set
     def size(self):
-        return self.__size
+        return self.__setsize
 
     # Return the list of values in the set
     def vals(self):
