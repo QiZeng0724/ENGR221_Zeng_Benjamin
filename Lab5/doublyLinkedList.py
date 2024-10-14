@@ -1,7 +1,7 @@
 """
 Benjamin Zeng
 File Name: doublyLinked.py
-Description: Implementing efficient insertion and removal of elements at both ends of the list.
+Description: Implementing efficient insertion and removal of elements at both ends of the list
 """
 
 from .doubleNode import DoubleNode 
