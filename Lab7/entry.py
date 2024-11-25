@@ -6,4 +6,10 @@ class Entry():
     def __str__(self):
         return "Nickname: {}, Species: {}".format(self.__nickname, self.__species)
     
+    def get_nickname(self):
+        return self.__nickname
+    
+    def get_species(self):
+        return self.__species
+    
     

@@ -1,35 +1,50 @@
 import pytest
 
-from ..box import Box
+from box import Box
 
-class BoxTest():
-    def setUp(self):
-        self.box = Box()
+def test_add():
+    box = Box()
+    
+    #tests adding nicknames
+    assert box.add("Rio", "Ampharos") == True #add a new nickname
+    assert box.add("Hycan", "Ceruledge") == True #add nother nickname
 
-    def test_add_entry(self):
-        self.assertTrue(self.box.add("Fluffy", "Cat"))
-        self.assertFalse(self.box.add("Fluffy", "Dog"))  # Duplicate nickname
+    #tests adding a duplicate nickname
+    assert box.add("Hycan","Armorouge") == False #tries to add an exsisting nickname
 
-    def test_find_entry(self):
-        self.box.add("Fluffy", "Cat")
-        entry = self.box.find("Fluffy", "Cat")
-        self.assertIsNotNone(entry)
-        self.assertEqual(entry.getSpecies(), "Cat")
-        self.assertIsNone(self.box.find("Fluffy", "Dog"))  # Species does not match
+def test_find():
+    box = Box()
+    
+    #adding nicknames
+    assert box.add("Rio", "Ampharos") 
+    assert box.add("Hycan", "Ceruledge") 
 
-    def test_find_all_nicknames(self):
-        self.box.add("Fluffy", "Cat")
-        self.box.add("Fido", "Dog")
-        nicknames = self.box.findAllNicknames()
-        self.assertIn("Fluffy", nicknames)
-        self.assertIn("Fido", nicknames)
+    #finding an exsisting entry with correct nickname
+    entry = box.find("Rio", "Ampharos")
+    assert entry is not None # should return entry
+    assert entry.get_species() == "Ampharos" #should match the name of the species
 
-    def test_remove_by_nickname(self):
-        self.box.add("Fluffy", "Cat")
-        self.assertTrue(self.box.removeByNickname("Fluffy"))
-        self.assertIsNone(self.box.findEntryByNickname("Fluffy"))
+    #finding an exsisting entry with incorrect species
+    entry = box.find("Rio", "Ceruledge") 
+    assert entry is None #should return none as species does not match with nickname
 
-    def test_remove_entry(self):
-        self.box.add("Fluffy", "Cat")
-        self.assertTrue(self.box.removeEntry("Fluffy", "Cat"))
-        self.assertIsNone(self.box.findEntryByNickname("Fluffy"))
+    #finding a non exsisting entry 
+    entry = box.find("Hibi", "Ampharos")
+    assert entry is None #should returm none as that is not the associated nickname 
+
+
+def test_find_entry_by_nickname():
+    box = Box()
+
+    #adding nicknames
+    assert box.add("Rio", "Ampharos") == True
+    assert box.add("Hycan", "Ceruledge") == True
+
+    #finding an exsisting entry
+    entry = box.findEntryByNickname("Rio")
+    assert entry is not None #should return entry
+    assert entry.get_species() == "Ampharos" # nickname should match species
+
+    #finding a non exsisting entry
+    entry = box.findEntryByNickname("Hibi")
+    assert entry is  None #should return none as nickname does not exsist
